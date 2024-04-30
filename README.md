@@ -2,12 +2,13 @@
 
 ## Contenu
 
-Ce dépôt contient les fichiers requis (ODD, TEI, RNG et HTML) pour l'évaluation du cours XML-TEI dispensé en deuxième année de Master 2 TNAH (École nationale des chartes).  
+Ce dépôt contient les fichiers requis (ODD, HTML, RNG et TEI) pour l'évaluation du cours XML-TEI dispensé en deuxième année de Master 2 TNAH (École nationale des chartes).  
 - Un fichier ODD  
-- Un fichier TEI  
+- Un fichier HTML  
 - Un fichier RNG  
-- Un fichier HTML
-- Un fichier PDF avec l'intégralité de la source encodée  
+- Un fichier TEI
+
+Il y a égalément un fichier PDF avec l'intégralité de la source encodée.  
 
 ## Présentation du projet
 
