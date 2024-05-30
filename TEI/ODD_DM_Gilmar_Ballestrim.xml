@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   COMMENTAIRES
+   Travail intéressant avec un projet éditorial abouti. La documentation reste un peu légère, mais claire.
+   On aurait aimé que les exploitations possibles de cette édition soient davantage développées.
+   Les contraintes sont pertinentes, mais comportent pas mal d'erreurs :
+   comme le schéma rng n'était pas attaché au fichier TEI, il n'était pas possible de voir ces erreurs
+   (cf le fichier pour voir la correction) : coquilles dans le nom d'élément (persGrp => personGrp),
+   utilisations non-TEI conformant, règles en contradiction avec l'encodage, etc.
+-->
+
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en"
    xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0">
    <teiHeader>
@@ -14,7 +25,7 @@
          </titleStmt>
          <publicationStmt>
             <p>
-               Edition encodée dans le cadre du master "Technologies numériques
+               Édition encodée dans le cadre du master "Technologies numériques
                appliquées à l'histoire" de l'École nationale des chartes.
             </p>
          </publicationStmt>
@@ -37,7 +48,8 @@
       </fileDesc>     
       <encodingDesc>
          <editorialDecl>
-            <p>Nous nous sommes inspirés des exemples d'ODD fournis dans le cours pour réaliser cette ODD. Plus spécifiquement celle de l'Eneide et de Froissart</p>
+            <p>Nous nous sommes inspirés des exemples d'ODD fournis dans le cours pour réaliser cette ODD. Plus
+               spécifiquement celle de l'Éneide et de Froissart</p>
          </editorialDecl>
       </encodingDesc>
    </teiHeader>
@@ -47,11 +59,24 @@
          <!-- PRESENTATION GÉNÉRALE -->
          <div1>
             <head>Guide de l'encodage de l'édition numérique du livre Les nègres de l'Afrique sus-équatoriale de Abel Hovelacque</head>
-            <p>Ce projet consiste en une proposition de codage numérique du livre intitulé <hi rend="italic">Les nègres de l'Afrique sus-équatoriale (Senégambie, Guinée, Soudan, Haut-Nil)</hi>, écrit par Abel Hovelacque, avec l'aide de la <emph><orgName><ref target="https://www.tei-c.org">Text Encoding Initiative</ref></orgName></emph>. Le texte choisi se compose de trois chapitres qui ont été encodés en "Parallel Segmentation Method. Mon objectif est de valoriser le patrimoine d'origine africaine et, par conséquent, il s'inscrit dans la continuité de mes recherches précédentes sur l'histoire de l'art africain.</p>
+            <p>Ce projet consiste en une proposition de codage numérique du livre intitulé <hi rend="italic">Les nègres
+               de l'Afrique sus-équatoriale (Senégambie, Guinée, Soudan, Haut-Nil)</hi>, écrit par Abel Hovelacque, avec
+               l'aide de la <emph><orgName><ref target="https://www.tei-c.org">Text Encoding Initiative</ref></orgName></emph>.
+               Le texte choisi se compose de trois chapitres qui ont été encodés en "Parallel Segmentation Method".
+               Mon objectif est de valoriser le patrimoine d'origine africaine et, par conséquent, il s'inscrit dans la
+               continuité de mes recherches précédentes sur l'histoire de l'art africain.</p>
             
             <div2>
                <head>Présentation du texte encodé</head>
-               <p>Écrit pendant la période coloniale française, ce livre conserve les caractéristiques historiques des textes que nous pouvons regrouper sous l'appellation d'écrits ethnographiques, dont l'objectif principal était de tenter de décrire les populations locales, ainsi que leurs potentialités (économie, faune et flore). Les trois chapitres sélectionnés traitent principalement de questions ethnographiques. À partir de ces descriptions, nous pouvons comprendre comment s'est opérée la construction historique de l'imaginaire sur les populations autochtones du continent africain et, de plus, l'écriture même de l'histoire africaine. Ces interprétations, bien qu'elles demeurent la vision du colon, n'en restent pas moins intéressantes pour comprendre ce que le philosophe congolais Valentin-Yves Mudimbe appelle "l'invention de l'Afrique".</p>
+               <p>Écrit pendant la période coloniale française, ce livre conserve les caractéristiques historiques des
+                  textes que nous pouvons regrouper sous l'appellation d'écrits ethnographiques, dont l'objectif principal
+                  était de tenter de décrire les populations locales, ainsi que leurs potentialités (économie, faune et
+                  flore). Les trois chapitres sélectionnés traitent principalement de questions ethnographiques. À partir
+                  de ces descriptions, nous pouvons comprendre comment s'est opérée la construction historique de
+                  l'imaginaire sur les populations autochtones du continent africain et, de plus, l'écriture même de
+                  l'histoire africaine. Ces interprétations, bien qu'elles demeurent la vision du colon, n'en restent
+                  pas moins intéressantes pour comprendre ce que le philosophe congolais Valentin-Yves Mudimbe appelle
+                  "l'invention de l'Afrique".</p>
             </div2>
             
             <div2>
@@ -60,7 +85,8 @@
                <p>La présente édition respecte le schéma TEI all.</p>
                <div3>
                   <head>Structure du teiHeader</head>
-                  <p>Le <gi>teiHeader</gi> est composé de trois sous-ensembles : <specList>
+                  <p>Le <gi>teiHeader</gi> est composé de trois sous-ensembles :
+                  <specList>
                      <specDesc key="fileDesc"/>
                      <specDesc key="encodingDesc"/>
                      <specDesc key="profileDesc"/> 
@@ -68,57 +94,81 @@
                   </p>
                   <div4>
                      <head>Structure du fileDesc</head>
-                     <p>Le <gi>fileDesc</gi> est lui-même composé de trois sous-ensembles : <gi>titleStmt</gi>, où nous pouvont trouver l'auteur et titre, le <gi>publicationStmt</gi>, pour décrire les métadonées de la version électronique et la <gi>sourceDesc</gi>, qui contient l'élément <gi>biblStruct</gi> qui sert à donner des informations sur la source elle-même d'une manière structurée</p>
+                     <p>Le <gi>fileDesc</gi> est lui-même composé de trois sous-ensembles : <gi>titleStmt</gi>, où nous
+                        pouvons trouver l'auteur et titre, le <gi>publicationStmt</gi>, pour décrire les métadonnées de
+                        la version électronique et la <gi>sourceDesc</gi>, qui contient l'élément <gi>biblStruct</gi> qui
+                        sert à donner des informations sur la source elle-même d'une manière structurée.</p>
                   </div4>
                   
                   <div4>
                      <head>Le <hi rend="italic">encodingDesc</hi></head>
-                     <p>L'<gi>encodingDesc</gi> donne des précisions sur la manière dont le fichier XML a été encodé. Par exemple, notre édition a été encodé en <hi rend="italic">Parallel Segmentation Method</hi>.</p>
+                     <p>L'<gi>encodingDesc</gi> donne des précisions sur la manière dont le fichier XML a été encodé.
+                        Par exemple, notre édition a été encodé en <hi rend="italic">Parallel Segmentation Method</hi>.</p>
                   </div4>
                   <div4>
                      <head>Le <hi rend="italic">profileDesc</hi></head>
-                     <p>Le profileDesc contient des métadonnées supplémentaires sur l'édition. Dans notre édition numérique, nous avons utilisés deux éléments :
-                        <gi>particDesc</gi> et <gi>settingDesc</gi>. Dans <emph>partcDesc</emph>, nous trouvons une liste de personnes, pouvant être des individus tels que des auteurs,
-                        ou des groupes de personnes rassemblées par l'élément <gi>nationality</gi>, bien que cela ne corresponde pas forcément à une entité historique, car les anciens
-                        territoires n'étaient pas toujours des pays au sens contemporain du terme. L'élément <gi>settingDesc</gi> contient la liste des lieux et la bibliographie mentionnée dans le texte.
-                        Dans tous les cas, des notes explicatives succinctes ont été ajoutées si nécessaire.</p>
+                     <p>Le profileDesc contient des métadonnées supplémentaires sur l'édition. Dans notre édition
+                        numérique, nous avons utilisés deux éléments : <gi>particDesc</gi> et <gi>settingDesc</gi>.
+                        Dans <gi>particDesc</gi>, nous trouvons une liste de personnes, pouvant être des individus
+                        tels que des auteurs, ou des groupes de personnes rassemblées par l'élément <gi>nationality</gi>,
+                        bien que cela ne corresponde pas forcément à une entité historique, car les anciens territoires
+                        n'étaient pas toujours des pays au sens contemporain du terme. L'élément <gi>settingDesc</gi>
+                        contient la liste des lieux et la bibliographie mentionnée dans le texte. Dans tous les cas, des
+                        notes explicatives succinctes ont été ajoutées si nécessaire.</p>
                   </div4>
                </div3>
                <div3>
                   <head>Le texte et les choix</head>
-                  <p>L'élément <gi>text</gi> contient les trois chapitres édités. Ils se trouvent dans l’élément <gi>body</gi>. Pour des contraintes de taille dans le cadre du devoir, chacun des trois chapitres comporte environ 5000 caractères.</p>
+                  <p>L'élément <gi>text</gi> contient les trois chapitres édités. Ils se trouvent dans l’élément
+                     <gi>body</gi>. Pour des contraintes de taille dans le cadre du devoir, chacun des trois chapitres
+                     comporte environ 5000 caractères.</p>
                   
                   <div4>
                      <head>Les livres et chapitres de l'œuvre</head>
-                     <p>Le texte de l'œuvre est organisé en deux livres, ou deux sous-parties. C'est pourquoi nous avons choisi de placer chaque livre ou sous-partie dans un conteneur div,
-                        avec un en-tête (head) décrivant le nom de la partie. L'attribut <att>type</att> permet de distinguer s'il s'agit d'une partie ou d'un chapitre, afin d'éviter toute ambiguïté.</p>
+                     <p>Le texte de l'œuvre est organisé en deux livres, ou deux sous-parties. C'est pourquoi nous avons
+                        choisi de placer chaque livre ou sous-partie dans un conteneur <gi>div</gi>, avec un en-tête
+                        (<gi>head</gi>) décrivant le nom de la partie. L'attribut <att>type</att> permet de distinguer
+                        s'il s'agit d'une partie ou d'un chapitre, afin d'éviter toute ambiguïté.</p>
                   </div4>
                   
                   <div4>
                      <head>Paragraphes</head>
-                     <p>Chaque paragraphe a été organisé de manière séquentielle, 
-                        donc la valeur de l'attribut <att>n</att> indique le numéro du paragraphe dans chaque chapitre. L'idée est de faciliter la compréhension et aussi la documentation ultérieure.</p>
+                     <p>Chaque paragraphe a été organisé de manière séquentielle, donc la valeur de l'attribut <att>n</att>
+                        indique le numéro du paragraphe dans chaque chapitre. L'idée est de faciliter la compréhension et
+                        aussi la documentation ultérieure.</p>
                   </div4>
                   
                   <div4>
                      <head>Citations à l'intérieur du texte</head>
-                     <p>En plus des informations mentionnées ci-dessus concernant le <gi>profileDesc</gi>, il convient de mentionner que dans le texte,
-                        il y a la présence de l'élément <gi>quote</gi> utilisé pour citer les phrases à l'intérieur du texte</p>
+                     <p>En plus des informations mentionnées ci-dessus concernant le <gi>profileDesc</gi>, il convient de
+                        mentionner que dans le texte, il y a la présence de l'élément <gi>quote</gi> utilisé pour citer
+                        les phrases à l'intérieur du texte</p>
                   </div4>
                   
                   <div4>
                      <head>Bibliographie</head>
-                     <p>Le texte numérisé ne comporte pas de bibliographie. Pour pallier cela, l'encodage a utilisé l'attribut source pour référencier la <gi>listBibl</gi>. De plus, lorsqu'un auteur est inconnu, la mention <hi rend="italic">Unknown</hi> a été utilisée, conformément aux instructions pour l'élément <ref target="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html">author</ref>. En ce qui concerne les titres d'œuvres inconnus, la note a été citée tel quel, c'est-à-dire avec <hi rend="italic">op. cit.</hi>.</p>
+                     <p>Le texte numérisé ne comporte pas de bibliographie. Pour pallier cela, l'encodage a utilisé
+                        l'attribut source pour référencer la <gi>listBibl</gi>. De plus, lorsqu'un auteur est inconnu,
+                        la mention <hi rend="italic">Unknown</hi> a été utilisée, conformément aux instructions pour
+                        l'élément <ref target="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html">author</ref>.
+                        En ce qui concerne les titres d'œuvres inconnus, la note a été citée tel quel, c'est-à-dire avec
+                        <hi rend="italic">op. cit.</hi>.</p>
                   </div4>
                   
                   <div4>
                      <head>Notes</head>
-                     <p>Mes notes se présentent principalement sous forme de citations bibliographiques. Par conséquent, la décision a été prise de conserver les notes dans le paragraphe et d'indiquer qu'elles sont des notes de bas de page avec l'attribut <att>place</att>. Pour différencier les différentes notes, l'attribut <att>n</att> a été utilisé. Les notes suivent une séquence logique où "n" est un entier et il est toujours supérieur ou égal à 1.</p>
+                     <p>Mes notes se présentent principalement sous forme de citations bibliographiques. Par conséquent,
+                        la décision a été prise de conserver les notes dans le paragraphe et d'indiquer qu'elles sont des
+                        notes de bas de page avec l'attribut <att>place</att>. Pour différencier les différentes notes,
+                        l'attribut <att>n</att> a été utilisé. Les notes suivent une séquence logique où "n" est un entier
+                        et il est toujours supérieur ou égal à 1.</p>
                   </div4>
                   
                   <div4>
                      <head>Saut de ligne avec un tiret de division</head>
-                     <p>Pour fluidifier le texte, nous avons choisi de supprimer les tirets de division lors d'un saut de ligne. Par exemple, "particu-lière" devient "particulière", "considé-rable" devient "considérable", et ainsi de suite.</p>
+                     <p>Pour fluidifier le texte, nous avons choisi de supprimer les tirets de division lors d'un saut
+                        de ligne. Par exemple, "particu-lière" devient "particulière", "considé-rable" devient "considérable",
+                        et ainsi de suite.</p>
                   </div4>
                   
                </div3>
@@ -166,8 +216,7 @@
                
                <!-- Checking module namesdates -->
                <classRef key="model.persNamePart"/>
-               <moduleRef key="namesdates"
-                  include="orgName persName placeName listPerson listPlace nationality person place"/>
+               <moduleRef key="namesdates" include="orgName persName placeName listPerson listPlace nationality person place personGrp"/>
                <elementSpec ident="orgName" mode="change">
                   <gloss>Informations concernant une organisation.</gloss>
                   <attList>
@@ -180,24 +229,37 @@
                   </attList>
                </elementSpec>
                <elementSpec ident="persName" mode="change">
-                  <gloss>Cet élément contient le nom, prénom et aussi l'unique missionaire dans le corpus du texte.</gloss>
+                  <gloss>Cet élément contient le nom, prénom et aussi l'unique missionnaire dans le corpus du texte.</gloss>
                   <constraintSpec ident="persName" scheme="schematron">
                      <!-- contrainte persName : ref doit être uniquement des lettres -->
                      <constraint>
-                        <s:rule context="tei:persName">
+                        <!--<s:rule context="tei:persName">
                            <s:assert test="@ref and matches(@ref, '^#[a-zA-Z]+$')">
                               L'attribut @ref doit être renseigné à l'aide un identifiant constitué uniquement de lettre
+                           </s:assert>-->
+                        <s:rule context="tei:TEI//tei:text//tei:persName">
+                           <!--<s:assert test="@ref and not matches(@ref, '^#[a-zA-Z]+$')">-->
+                           <s:assert test="@ref and matches(@ref, '^#[a-zA-Z]+$')">
+                              <!--L'attribut @ref ne doit pas être renseigné avec des symboles spéciaux ou des chiffres-->
+                              Dans le text, les persName doivent avoir un attribut @ref dont la valeur ne doit pas
+                              contenir de chiffres ou caractères spéciaux
                            </s:assert>
+
                            <!-- contrainte persName : subtype est interdit en tant qu'attribut -->
-                           <s:assert test="not(@subtype)">
-                              L'attribut @subtype est inteerdit en 'persName'.
-                           </s:assert>
+                           <!--CORRECTION : ce n'est pas la manière de définir 2 s:assert dans s:rule-->
+                           <!--<s:assert test="not(@subtype)">
+                              L'attribut @subtype est interdit pour 'persName'.
+                              &lt;!&ndash;l'attribut est par ailleurs supprimé (@mode="delete") ce qui est équivalent&ndash;&gt;
+                           </s:assert>-->
                         </s:rule>
                      </constraint>
                   </constraintSpec>
                   <attList>
                      <!-- L'élément persName doit avoir un attribut ref -->
-                     <attDef ident="ref" mode="delete" usage="opt"/>   
+                     <!--<attDef ident="ref" mode="delete" usage="opt"/>-->
+                     <!-- CORRECTION -->
+                     <attDef ident="ref" mode="change"/>
+
                      <attDef ident="calendar" mode="delete"/>
                      <attDef ident="source" mode="delete"/>
                      <attDef ident="role" mode="delete"/>
@@ -208,18 +270,25 @@
                <elementSpec ident="placeName" mode="change">
                   <gloss>Contient le nom des lieux, historiques ou non, mentionnés dans le texte</gloss>
                   <constraintSpec ident="placeName" scheme="schematron">
-                     <!-- contrainte placeName : ref n'accepete pas des symboles spéciaux ou des chiffres -->
+                     <!-- contrainte placeName : ref n'accepte pas des symboles spéciaux ou des chiffres -->
                      <constraint>
-                        <s:rule context="tei:placeName">
-                           <s:assert test="@ref and not matches(@ref, '^#[a-zA-Z]+$')">
-                              L'attribut @ref ne doit pas être renseigné avec des symboles spéciaux ou des chiffres
+                        <!--<s:rule context="tei:placeName">-->
+                        <s:rule context="tei:TEI//tei:text//tei:placeName">
+                           <s:assert test="@ref and matches(@ref, '^#[a-zA-Z]+$')">
+                           <!--<s:assert test="@ref and not matches(@ref, '^#[a-zA-Z]+$')">-->
+                              <!--L'attribut @ref ne doit pas être renseigné avec des symboles spéciaux ou des chiffres-->
+                              Dans le text, les placeName doivent avoir un attribut @ref dont la valeur ne doit pas
+                              contenir de chiffres ou caractères spéciaux
                            </s:assert>
                         </s:rule>
                      </constraint>
                   </constraintSpec>
                   <attList>
                      <!-- L'élément placeName doit avoir un attribut ref -->
-                     <attDef ident="ref" mode="delete" usage="opt"/> 
+                     <!--<attDef ident="ref" mode="delete" usage="opt"/>-->
+                     <!-- CORRECTION -->
+                     <attDef ident="ref" mode="change"/>
+
                      <attDef ident="calendar" mode="delete"/>
                      <attDef ident="source" mode="delete"/>
                      <attDef ident="role" mode="delete"/>
@@ -227,6 +296,23 @@
                      <attDef ident="subtype" mode="delete"/>
                   </attList>
                </elementSpec>
+               <!--CORRECTION-->
+               <elementSpec ident="personGrp" mode="change">
+                  <gloss>Cet élément contient le nom, prénom et aussi l'unique missionnaire dans le corpus du texte.</gloss>
+                  <content>
+                     <!-- CORRECTION personGrp ne contient pas de texte selon la TEI -->
+                     <textNode/>
+                  </content>
+                  <attList>
+                     <!-- CORRECTION personGrp ne prend pas d'attribut @ref selon la TEI -->
+                     <attDef ident="ref" mode="add">
+                        <datatype>
+                           <dataRef key="teidata.pointer"/>
+                        </datatype>
+                     </attDef>
+                  </attList>
+               </elementSpec>
+
                <elementSpec ident="listPerson" mode="change">
                   <gloss>La liste des personnes dans le texte peut contenir le nom d'un individu, d'un groupe de personnes ou d'une nationalité.</gloss>
                   <!--Règle contraignant l’enchaînement d'éléments de listPerson -->
@@ -611,6 +697,20 @@
                   include="p emph hi quote desc gloss date ref list item head note monogr author editor respStmt resp title imprint publisher pubPlace bibl biblStruct listBibl"/>
                <elementSpec ident="p" mode="change">
                   <gloss>Paragraphe.</gloss>
+                  <!--CORRECTION : selon la TEI, <nationality> et <personGrp> ne peuvent pas être contenus dans un paragraphe-->
+                  <content>
+                     <sequence preserveOrder="false">
+                        <textNode/>
+                        <elementRef key="persName" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="placeName" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="nationality" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="note" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="quote" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="personGrp" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="bibl" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="hi" minOccurs="0" maxOccurs="unbounded"/>
+                     </sequence>
+                  </content>
                   <attList>
                      <attDef ident="source" mode="delete"/>
                   </attList>
@@ -695,6 +795,18 @@
                </elementSpec>
                <elementSpec ident="note" mode="change">
                   <gloss>Contient une note ou une annotation.</gloss>
+                  <!--CORRECTION : selon la TEI, <nationality> et <personGrp> ne peuvent pas être contenus dans une note-->
+                  <content>
+                     <sequence preserveOrder="false">
+                        <textNode/>
+                        <elementRef key="nationality" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="hi" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="author" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="persName" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="placeName" minOccurs="0" maxOccurs="unbounded"/>
+                        <elementRef key="bibl" minOccurs="0" maxOccurs="unbounded"/>
+                     </sequence>
+                  </content>
                   <attList>
                      <attDef ident="source" mode="delete"/>
                      <attDef ident="place" mode="change">
@@ -819,14 +931,14 @@
                
                <!-- Checking module header -->
                <moduleRef key="header"
-                  include="teiHeader fileDesc titleStmt edition publicationStmt sourceDesc encodingDesc editorialDecl profileDesc"/>
+                  include="teiHeader fileDesc titleStmt edition publicationStmt sourceDesc encodingDesc editorialDecl profileDesc abstract"/>
                <elementSpec ident="teiHeader" mode="change">
                   <attList>
                      <attDef ident="source" mode="delete"/>
                   </attList>
                </elementSpec>
                <elementSpec ident="fileDesc" mode="change">
-                  <gloss>Métadonnées biliographiques du fichier.</gloss>
+                  <gloss>Métadonnées bibliographiques du fichier.</gloss>
                   <attList>
                      <attDef ident="source" mode="delete"/>
                   </attList>

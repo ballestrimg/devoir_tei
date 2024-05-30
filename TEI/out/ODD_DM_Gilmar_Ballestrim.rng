@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-04-30T01:47:24Z. . 
+Schema generated from ODD source 2024-05-30T06:59:22Z. . 
 TEI Edition: P5 Version 4.7.0. Last updated on 16th November 2023, revision e5dd73ed0 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/ 
   
@@ -79,7 +79,7 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/4.7.0/
             </choice>
          </zeroOrMore>
       </element>
-      <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="d10e18798-constraint">
+      <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="d10e19187-constraint">
          <rule context="tei:content">
             <report test="descendant::*[not(namespace-uri(.) =               ('http://relaxng.org/ns/compatibility/annotations/1.0', 'http://relaxng.org/ns/structure/1.0', 'http://www.tei-c.org/ns/1.0'))]">content descendants must be in the
               namespaces
@@ -1660,6 +1660,7 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
    <define name="model.personLike">
       <choice>
          <ref name="person"/>
+         <ref name="personGrp"/>
       </choice>
    </define>
    <define name="model.personPart">
@@ -2111,6 +2112,7 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
    </define>
    <define name="model.profileDescPart">
       <choice>
+         <ref name="abstract"/>
          <ref name="particDesc"/>
          <ref name="settingDesc"/>
       </choice>
@@ -2158,7 +2160,33 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
    <define name="p">
       <element name="p">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Paragraphe.) marks paragraphs in prose. [3.1. Paragraphs 7.2.5. Speech Contents]</a:documentation>
-         <ref name="macro.paraContent"/>
+         <interleave>
+            <text/>
+            <zeroOrMore>
+               <ref name="persName"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="placeName"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="nationality"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="note"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="quote"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="personGrp"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="bibl"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="hi"/>
+            </zeroOrMore>
+         </interleave>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="oddbyexample-p-abstractModel-structure-p-in-ab-or-p-constraint-report-5">
             <rule context="tei:p">
@@ -2491,7 +2519,27 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
    <define name="note">
       <element name="note">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Contient une note ou une annotation.) contains a note or annotation. [3.9.1. Notes and Simple Annotation 2.2.6. The Notes Statement 3.12.2.8. Notes and Statement of Language 9.3.5.4. Notes within Entries]</a:documentation>
-         <ref name="macro.specialPara"/>
+         <interleave>
+            <text/>
+            <zeroOrMore>
+               <ref name="nationality"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="hi"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="author"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="persName"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="placeName"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <ref name="bibl"/>
+            </zeroOrMore>
+         </interleave>
          <ref name="att.global.attribute.xmlid"/>
          <ref name="att.global.attribute.n"/>
          <ref name="att.global.attribute.xmllang"/>
@@ -3266,7 +3314,7 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
    </define>
    <define name="persName">
       <element name="persName">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Cet élément contient le nom, prénom et aussi l'unique missionaire dans le corpus du texte.) contains a proper noun or proper-noun phrase referring to a person, possibly including one or more of the person's forenames, surnames, honorifics, added names, etc. [13.2.1. Personal Names]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Cet élément contient le nom, prénom et aussi l'unique missionnaire dans le corpus du texte.) contains a proper noun or proper-noun phrase referring to a person, possibly including one or more of the person's forenames, surnames, honorifics, added names, etc. [13.2.1. Personal Names]</a:documentation>
          <ref name="macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="oddbyexample-persName-persName-constraint-rule-17">
@@ -3275,12 +3323,11 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                     xmlns:xi="http://www.w3.org/2001/XInclude"
-                    context="tei:persName">
+                    context="tei:TEI//tei:text//tei:persName">
                <s:assert test="@ref and matches(@ref, '^#[a-zA-Z]+$')">
-                              L'attribut @ref doit être renseigné à l'aide un identifiant constitué uniquement de lettre
-                           </s:assert>
-               <s:assert test="not(@subtype)">
-                              L'attribut @subtype est inteerdit en 'persName'.
+                              
+                              Dans le text, les persName doivent avoir un attribut @ref dont la valeur ne doit pas
+                              contenir de chiffres ou caractères spéciaux
                            </s:assert>
             </s:rule>
          </pattern>
@@ -3309,6 +3356,18 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
          <ref name="att.global.responsibility.attribute.resp"/>
          <ref name="att.datable.attributes"/>
          <ref name="att.editLike.attributes"/>
+         <optional>
+            <attribute name="ref">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) provides an explicit means of locating a full definition or identity for the entity being named by means of one or more URIs.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="anyURI">
+                        <param name="pattern">\S+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -3323,9 +3382,12 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
                     xmlns:s="http://purl.oclc.org/dsdl/schematron"
                     xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                     xmlns:xi="http://www.w3.org/2001/XInclude"
-                    context="tei:placeName">
-               <s:assert test="@ref and not matches(@ref, '^#[a-zA-Z]+$')">
-                              L'attribut @ref ne doit pas être renseigné avec des symboles spéciaux ou des chiffres
+                    context="tei:TEI//tei:text//tei:placeName">
+               <s:assert test="@ref and matches(@ref, '^#[a-zA-Z]+$')">
+                           
+                              
+                              Dans le text, les placeName doivent avoir un attribut @ref dont la valeur ne doit pas
+                              contenir de chiffres ou caractères spéciaux
                            </s:assert>
             </s:rule>
          </pattern>
@@ -3354,6 +3416,18 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
          <ref name="att.global.rendition.attribute.rendition"/>
          <ref name="att.global.responsibility.attribute.cert"/>
          <ref name="att.global.responsibility.attribute.resp"/>
+         <optional>
+            <attribute name="ref">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) provides an explicit means of locating a full definition or identity for the entity being named by means of one or more URIs.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="anyURI">
+                        <param name="pattern">\S+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -3464,6 +3538,75 @@ Suggested values include: 1] internal; 2] external; 3] conjecture</a:documentati
          <ref name="att.global.responsibility.attribute.resp"/>
          <ref name="att.editLike.attributes"/>
          <ref name="att.sortable.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="personGrp">
+      <element name="personGrp">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Cet élément contient le nom, prénom et aussi l'unique missionnaire dans le corpus du texte.) describes a group of individuals treated as a single person for analytic purposes. [15.2.2. The Participant Description]</a:documentation>
+         <text/>
+         <ref name="att.global.attributes"/>
+         <ref name="att.sortable.attributes"/>
+         <optional>
+            <attribute name="ref">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <data type="anyURI">
+                  <param name="pattern">\S+</param>
+               </data>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="role">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the role of this group of participants in the interaction.</a:documentation>
+               <data type="token">
+                  <param name="pattern">[^\p{C}\p{Z}]+</param>
+               </data>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="sex">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the sex of the participant group.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="token">
+                        <param name="pattern">[^\p{C}\p{Z}]+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="gender">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the gender of the participant group.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="token">
+                        <param name="pattern">[^\p{C}\p{Z}]+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="age">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the age group of the participants.</a:documentation>
+               <data type="token">
+                  <param name="pattern">[^\p{C}\p{Z}]+</param>
+               </data>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="size">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">describes informally the size or approximate size of the group for example by means of a number and an indication of accuracy e.g. approx 200.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="token">
+                        <param name="pattern">[^\p{C}\p{Z}]+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -4021,7 +4164,7 @@ Child elements of <name/> are only allowed when an external module is being load
             <ref name="model.contentPart"/>
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="oddbyexample-sequence-sequencechilden-constraint-assert-22">
+                  id="oddbyexample-sequence-sequencechilden-constraint-assert-21">
             <rule context="tei:sequence">
                <sch:assert xmlns="http://www.tei-c.org/ns/1.0"
                            xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4060,7 +4203,7 @@ Child elements of <name/> are only allowed when an external module is being load
             </choice>
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="oddbyexample-alternate-alternatechilden-constraint-assert-23">
+                  id="oddbyexample-alternate-alternatechilden-constraint-assert-22">
             <rule context="tei:alternate">
                <sch:assert xmlns="http://www.tei-c.org/ns/1.0"
                            xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -4305,7 +4448,7 @@ Child elements of <name/> are only allowed when an external module is being load
              prefix="teix"
              uri="http://www.tei-c.org/ns/Examples"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="oddbyexample-attDef-attDefContents-constraint-assert-30">
+                  id="oddbyexample-attDef-attDefContents-constraint-assert-29">
             <rule context="tei:attDef">
                <assert xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:s="http://purl.oclc.org/dsdl/schematron"
@@ -4506,7 +4649,7 @@ Child elements of <name/> are only allowed when an external module is being load
    </define>
    <define name="fileDesc">
       <element name="fileDesc">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Métadonnées biliographiques du fichier.) contains a full bibliographic description of an electronic file. [2.2. The File Description 2.1.1. The TEI Header and Its Components]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Métadonnées bibliographiques du fichier.) contains a full bibliographic description of an electronic file. [2.2. The File Description 2.1.1. The TEI Header and Its Components]</a:documentation>
          <group>
             <group>
                <ref name="titleStmt"/>
@@ -4689,6 +4832,20 @@ Child elements of <name/> are only allowed when an external module is being load
          <ref name="att.global.rendition.attribute.rendition"/>
          <ref name="att.global.responsibility.attribute.cert"/>
          <ref name="att.global.responsibility.attribute.resp"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="abstract">
+      <element name="abstract">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">contains a summary or formal abstract prefixed to an existing source document by the encoder. [2.4.4. Abstracts]</a:documentation>
+         <oneOrMore>
+            <choice>
+               <ref name="model.pLike"/>
+               <ref name="model.listLike"/>
+               <ref name="listBibl"/>
+            </choice>
+         </oneOrMore>
+         <ref name="att.global.attributes"/>
          <empty/>
       </element>
    </define>
